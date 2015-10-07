@@ -1,0 +1,23 @@
+systeminfo
+systeminfo | find "作業系統名稱:" > C:\HL1A510.TXT
+作業系統名稱:
+
+rem cd %USERPROFILE%\桌面\
+rem xcopy \\hissvr\tchexe$\update\lib\上網程式切換處.* /Y
+rem xcopy \\hissvr\tchexe$\update\lib\*.lnk /Y
+rem cd %
+copy \\hissvr\tchexe$\update\DesktopChange_HL.exe c:\tch\ /Y
+if not exist  C:\tch\e-portfolio\ copy \\hissvr\tchexe$\update\lib\e-portfolio.exe c:\tch\ /Y
+if not exist  C:\tch\e-portfolio\ copy \\hissvr\tchexe$\update\lib\e-portfolio.lnk c:\Users\%userName%\Desktop\ /Y
+if not exist  C:\tch\e-portfolio\ call \\hissvr\tchexe$\update\e-portfolio.bat
+xcopy \\hissvr\tchexe$\update\URL\*.url "%USERPROFILE%"\Favorites\連結 /Y
+xcopy /y \\hissvr\TCHEXE$\"BAR CODE 39碼"\*.ini %systemroot%\Fonts\
+xcopy /y \\hissvr\TCHEXE$\"BAR CODE 39碼"\*.ttf  %systemroot%\Fonts\*.ttf
+
+echo ********** 清除系統垃圾 **********
+xcopy \\hissvr\tchexe$\update\清除系統垃圾.bat c:\tch\ /Y
+
+echo **********首頁設定**********
+regedit.exe /s \\hissvr\tchexe$\update\Reg\Iepage.reg >NUL
+regedit.exe /s \\hissvr\tchexe$\update\Reg\hlsus.reg >NUL
+regedit.exe /s \\hissvr\tchexe$\update\Reg\TrueSite.reg >NUL
